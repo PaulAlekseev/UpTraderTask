@@ -1,0 +1,43 @@
+{% load tree_tags %}
+{% if chosen_node.parent is None %}
+{% get_with_key result_dict -1 as not_deep_nodes %}
+{% for not_deep_node in not_deep_nodes.0.values %}
+
+{% if not_deep_node.id != chosen_node.id %}
+<a class="menu__branch" href="{{ not_deep_node.get_absolute_url }}">
+    {{ not_deep_node }}
+</a>
+{% endif %}
+
+{% endfor %}
+{% if chosen_node is not None %}
+{% get_with_key not_deep_nodes.0 chosen_node.id as not_deep_last_node %}
+<a class="menu__branch" style="background-color: blue" href="{{ not_deep_last_node.get_absolute_url }}">
+    {{not_deep_last_node}}
+</a>
+{% endif %}
+
+
+{% else %}
+
+
+{% get_with_key result_dict chosen_node.parent.id as deep_nodes %}
+{% get_with_key flat_dict chosen_node.parent.id as parent_node %}
+{% draw_node result_dict parent_node flat_dict %}
+<hr class="line">
+{% for deep_node in deep_nodes.0.values %}
+{% if deep_node.id != chosen_node.id %}
+<a class="menu__branch" href="{{ deep_node.get_absolute_url }}">
+    {{deep_node}}
+</a>
+{% endif %}
+{% endfor %}
+{% get_with_key deep_nodes.0 chosen_node.id as last_node %}
+<a class="menu__branch" style="background-color: blue" href="{{ last_node.get_absolute_url }}">
+    {{last_node}}
+</a>
+
+{% get_with_key result_dict thing.id as outer_objects %}
+
+
+{% endif %}

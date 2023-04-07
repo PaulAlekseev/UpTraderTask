@@ -1,0 +1,23 @@
+{% load tree_tags %}
+<div class="menu__container">
+    <div class="menus__container">
+        <a class="menu__branch" style="background-color: black;" href="/">
+            {{ menu_name }}
+        </a>
+        <hr class="line">
+        {% if result_dict is not None %}
+        {% draw_node result_dict chosen_node flat_dict %}
+
+        {% get_with_key result_dict chosen_node.id as last_nodes %}
+        {% if last_nodes is not None %}
+        <hr class="line">
+        {% for node in last_nodes.0.values %}
+        <a class="menu__branch" href="{{ node.get_absolute_url }}">
+            {{ node }}
+        </a>
+        {% endfor %}
+
+        {% endif %}
+        {% endif %}
+    </div>
+</div>

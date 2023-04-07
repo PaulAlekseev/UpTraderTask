@@ -1,0 +1,40 @@
+.wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.menu__label {
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu__container {
+    margin-top: 8px;
+    border: solid #1d1d1d;
+    border-radius: 8px;
+}
+
+.menus__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu__branch {
+    margin-top: 5px;
+    background-color: brown;
+    color: aliceblue;
+    text-decoration: none;
+    text-decoration-line:none;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.line {
+    width: 100%;
+}

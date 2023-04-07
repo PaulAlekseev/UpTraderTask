@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load tree_tags %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TreeTask</title>
+    <link rel="stylesheet" href="{% static 'tree/css/index.css' %}">
+</head>
+<body>
+<div class="wrapper">
+    {% draw_menu 'Завтрак'%}
+    {% draw_menu 'Обед' %}
+</div>
+</body>
+</html>
