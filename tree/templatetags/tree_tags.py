@@ -17,8 +17,7 @@ def draw_menu(context: RequestContext, menu_name):
     items = Node.objects \
         .filter(menu__name=menu_name) \
         .select_related("parent") \
-        .select_related("parent__parent") \
-        .select_related("menu")
+        .select_related("parent__parent")
     result = list(items)
     if len(result) == 0:
         return {"menu_name": menu_name, "result": None}
