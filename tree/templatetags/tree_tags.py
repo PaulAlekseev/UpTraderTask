@@ -20,7 +20,7 @@ def draw_menu(context: RequestContext, menu_name):
         .select_related("parent__parent")
     result = list(items)
     if len(result) == 0:
-        return {"menu_name": menu_name, "result": None}
+        return {"menu_name": menu_name}
     chosen_item = get_with_slug(result, name)
     result_dict, flat_dict = form_data(result)
     return {"chosen_node": chosen_item, "result_dict": result_dict, "flat_dict": flat_dict, "menu_name": menu_name}
